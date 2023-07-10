@@ -1,0 +1,50 @@
+
+
+
+   ☆  db.Employee_Info.find().limit(2).pretty();   <-- Display first two documents 
+
+   ☆  Amshekh_Labs> db.Employee_Info.find().sort( { Emp_Name: -1 }).pretty();  <-- sort by Descending order for Employee Names
+
+   ☆	db.Employee_Info.updateOne (
+   	 {
+      		Emp_Name: 'Meike Niemeier',
+   	 },
+  	 {
+       		$set:{
+               		Age: 25			<-- This will update Age and upsert : true will create record if it doesn't exist.
+      		}
+   	 },
+	 {upsert:true}
+	)
+
+ 
+   ☆    db.Employee_Info.updateOne (
+   	 {
+      		Emp_Name: 'Meike Niemeier',
+   	 },
+   	 {
+     		$rename:{
+                	  Age: 'Age_in_Years'		<-- rename field Age as Age in Years
+        	}
+   	 },
+        ) 
+
+
+   ☆    db.Employee_Info.updateOne (
+   	 {
+      		Emp_Name: 'Meike Niemeier',
+   	 },
+     	 {
+      		$inc:{
+               		Age_in_Years: 3		<-- increment age by 3 years (to decrement give value in minus)
+	        }
+       	 },
+        )
+
+
+   ☆    db.Employee_Info.remove (		<-- remove to delete a document
+   	 {
+     		 Emp_Name: 'Meike Niemeier',
+         }
+	)
+   
